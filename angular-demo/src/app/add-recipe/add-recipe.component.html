@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+      <mat-toolbar color="primary">
+        <span class="fill-remaining-space">Recipe Form</span>
+      </mat-toolbar>
+      <br>
+      <div class="container" novalidate>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+          <div class="row">
+            <mat-form-field class="form-element">
+              <input matInput placeholder="Recipe Id" formControlName="recipeId">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="form-element">
+              <input matInput placeholder="Recipe Name" formControlName="recipeName">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="form-element">
+              <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2"
+                matAutosizeMaxRows="5" formControlName="description"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="form-element">
+              <input matInput placeholder="Calories" formControlName="calories">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" MatFormFieldControl formControlName="recipeCreatedDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="row pb-3">
+            <input #fileInput type="file" (change)="onFileInput($event)" placeholder="Select Recipe Image"
+              formControlName="recipeImage"> <span *ngIf="fileName"> {{ fileName }} </span>
+          </div>
+
+          <div class="row">
+            <mat-form-field class="form-element">
+              <input matInput placeholder="Ingredients Name" formControlName="ingredientNames">
+            </mat-form-field>
+          </div>
+
+          <!-- <div class="row" formArrayName="ingredientNames"
+            *ngFor="let grp of formGroup.controls.ingredientNames?.value; let i = index;">
+            <mat-form-field [formGroupName]="i" class="form-element">
+              <input matInput placeholder="Ingredient Name">
+            </mat-form-field>
+
+          </div> -->
+          <div class="row text-right">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+              <button mat-raised-button (click)="addForm()" color="secondary" type="button" class="button"> <span
+                  class="material-icons">
+                  add_circle_outline
+                </span> Add</button>
+            </div>
+          </div>
+
+
+          <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button">Submit Recipe</button>
+          </div>
+
+        </form>
+      </div>
+
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+</div>
